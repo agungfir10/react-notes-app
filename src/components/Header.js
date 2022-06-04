@@ -1,38 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Header extends Component {
-  constructor(props) {
-    super(props);
+function Header({ onSearch }) {
+  const [keyword, setKeyword] = React.useState('');
 
-    this.state = {
-      key: '',
-    };
+  const onChange = (e) => {
+    setKeyword(e.target.value);
+    onSearchHandler(e.target.value);
+  };
 
-    this.onChange = this.onChange.bind(this);
-    this.onSearchHandler = this.onSearchHandler.bind(this);
-  }
-
-  onChange(e) {
-    this.setState({ key: e.target.value });
-    this.onSearchHandler(e.target.value);
-  }
-
-  onSearchHandler(key) {
-    this.props.onSearch(key);
-  }
-  render() {
-    return (
-      <nav className="note-app__header">
-        <h1>Note App</h1>
-        <input
-          className="note-search"
-          type="text"
-          value={this.state.key}
-          onChange={this.onChange}
-        />
-      </nav>
-    );
-  }
+  const onSearchHandler = (keyword) => {
+    onSearch(keyword);
+  };
+  return (
+    <nav className="note-app__header">
+      <h1>Note App</h1>
+      <input
+        className="note-search"
+        type="text"
+        value={keyword}
+        onChange={onChange}
+      />
+    </nav>
+  );
 }
 
 export default Header;

@@ -1,3 +1,4 @@
+import autoBind from 'auto-bind';
 import { Component } from 'react';
 import { showFormattedDate } from '../utils/index';
 
@@ -5,8 +6,7 @@ class NoteItem extends Component {
   constructor(props) {
     super(props);
 
-    this.onDeleteHandler = this.onDeleteHandler.bind(this);
-    this.onArchiveHandler = this.onArchiveHandler.bind(this);
+    autoBind(this);
   }
 
   onDeleteHandler(idNote) {

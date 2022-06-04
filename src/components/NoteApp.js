@@ -1,3 +1,4 @@
+import autoBind from 'auto-bind';
 import { Component } from 'react';
 import { getInitialData } from '../utils/index';
 import Header from './Header';
@@ -13,10 +14,7 @@ class NoteApp extends Component {
       notes: getInitialData(),
     };
 
-    this.onDeleteNoteHandler = this.onDeleteNoteHandler.bind(this);
-    this.onAddNote = this.onAddNote.bind(this);
-    this.onArchiveNoteHandler = this.onArchiveNoteHandler.bind(this);
-    this.onNoteSearchHandler = this.onNoteSearchHandler.bind(this);
+    autoBind(this);
   }
 
   onAddNote(note) {

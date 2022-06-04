@@ -1,3 +1,4 @@
+import autoBind from 'auto-bind';
 import React, { Component } from 'react';
 
 class NoteInput extends Component {
@@ -9,9 +10,7 @@ class NoteInput extends Component {
       body: '',
     };
 
-    this.onTitleChangeHandler = this.onTitleChangeHandler.bind(this);
-    this.onBodyChangeHandler = this.onBodyChangeHandler.bind(this);
-    this.onSubmitNote = this.onSubmitNote.bind(this);
+    autoBind(this);
   }
 
   onTitleChangeHandler(e) {
@@ -37,6 +36,14 @@ class NoteInput extends Component {
   onSubmitNote(e) {
     e.preventDefault();
     const { title, body } = this.state;
+    if (title === '' || title === null) {
+      alert('Judul tidak boleh kosong');
+      return;
+    }
+    if (body === '' || body === null) {
+      alert('Body tidak boleh kosong');
+      return;
+    }
     const note = {
       id: +new Date(),
       title,

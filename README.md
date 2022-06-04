@@ -71,4 +71,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ### Results
 
-![React Notes App](../personal-notes-starter/results/result.png)
+![React Notes App](./results/result.png)
